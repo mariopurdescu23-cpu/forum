@@ -47,6 +47,13 @@ try{
  const id=db.prepare("SELECT id FROM users WHERE username='BrowserPlayer'").get().id;db.prepare("UPDATE users SET role='OWNER' WHERE id=?").run(id);
  await navigate('/staff?tab=settings');await waitFor('!!document.querySelector("[name=ticket_categories]")');await fill({rules:'Respectă comunitatea RETRO.',ticket_categories:'Ajutor general\nConturi',report_categories:'Griefing\nAltele'});await submit('admin-settings');await waitFor('document.querySelector("#toast").textContent.includes("salvată")');check('staff settings and support categories');
  await navigate('/staff?tab=users');assert.match(await evaluate('document.querySelector("#content").innerText'),/BrowserPlayer/);check('staff member management page');
+ for(const height of [900,768,650,580]) {
+  await c('Emulation.setDeviceMetricsOverride',{width:1440,height,deviceScaleFactor:1,mobile:false});
+  assert.equal(await evaluate('(()=>{const s=document.querySelector(".sidebar");return s.scrollHeight<=s.clientHeight+1;})()'),true,`Sidebar scrolls at ${height}px`);
+ }
+ await c('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+ check('complete staff sidebar fits short desktop screens');
+
  await navigate('/forum');await fill({q:'spawn'});await submit('search');await waitFor('document.querySelectorAll(".thread-row").length===1');check('search');
  await c('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await navigate('/');assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true);await evaluate('document.querySelector("[data-action=menu]").click()');assert.equal(await evaluate('document.querySelector(".sidebar").classList.contains("open")'),true);await evaluate('document.querySelector("[data-action=menu]").click()');await screenshot('mobile-home');check('390px mobile layout and accessible menu');
  await navigate('/cases/1');assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true);await screenshot('mobile-ticket');check('mobile ticket layout');
