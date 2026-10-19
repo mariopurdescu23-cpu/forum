@@ -72,3 +72,7 @@ npm run test:browser
 După publicare: înregistrare, autentificare, creare tichet, primire notificare Discord, răspuns din staff, verificarea confidențialității cu alt cont și verificarea datelor după redeploy. Configurarea externă și livrarea reală Discord necesită conturile și secretele proprietarului.
 
 Surse: [Turso](https://docs.turso.tech/sdk/ts/reference), [planuri Turso](https://turso.tech/pricing), [Vercel waitUntil](https://vercel.com/docs/functions/functions-api-reference/vercel-functions-package), [Discord Webhooks](https://docs.discord.com/developers/resources/webhook).
+
+## Jurnal Discord extins
+
+Webhookul primeste notificari pentru conturi noi, autentificari/deconectari, resetari de parola reusite, profiluri, discutii, raspunsuri, voturi, cereri, mesaje si note la cereri, atasamente, roluri, categorii si setari. Se afiseaza actiunea, autorul si linkul; nu se transmit corpul mesajelor, emailuri, parole, tokenuri sau continutul notelor interne. Vizualizarile paginilor si marcarile notificarilor ca citite nu genereaza mesaje Discord.
