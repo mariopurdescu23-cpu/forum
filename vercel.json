@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run check",
+  "outputDirectory": "public",
+  "functions": {
+    "api/index.mjs": {
+      "maxDuration": 60,
+      "includeFiles": "{public/**,migrations/**}"
+    }
+  },
+  "rewrites": [{"source": "/(.*)", "destination": "/api/index"}],
+  "crons": [{"path": "/api/cron/discord", "schedule": "0 6 * * *"}]
+}

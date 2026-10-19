@@ -1,0 +1,12 @@
+import { createServer } from 'node:http';
+import { openDatabase } from './lib/db.mjs';
+import { createDiscord } from './lib/discord.mjs';
+import { createApp } from './lib/app.mjs';
+const host=process.env.HOST || '127.0.0.1', port=Number(process.env.PORT || 3000);
+if(process.env.NODE_ENV==='production' && (!process.env.APP_ORIGIN?.startsWith('https://') || process.env.COOKIE_SECURE!=='true')) throw new Error('Producția necesită APP_ORIGIN HTTPS și COOKIE_SECURE=true.');
+const db=openDatabase(process.env.DATABASE_PATH || './data/forum.sqlite');
+const discord=createDiscord(db);
+discord.start();
+const server=createServer({requestTimeout:30000,headersTimeout:15000},createApp(db,{discord}));
+server.listen(port,host,()=>console.log(`RETRO SMP: ${process.env.APP_ORIGIN || `http://localhost:${port}`} (ascultă pe ${host}:${port})`));
+for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>server.close(async()=>{await discord.stop();db.close();process.exit(0);}));
