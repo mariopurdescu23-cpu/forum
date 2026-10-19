@@ -130,3 +130,6 @@ dialog[open]::backdrop { opacity:1; }
  #toast,#toast:empty,#toast:not(:empty) { transform:translateX(-50%); }
  button[aria-busy=true]::after { border-radius:2px; border-color:#F5F3F5; }
 }
+
+.brand .brand-name .brand-red { color:#ef3340; }
+.brand .brand-name .brand-white { color:#fff; }
