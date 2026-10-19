@@ -93,7 +93,7 @@ test('RETRO: authenticated workflows, privacy, moderation and persistence',async
   });
   await t.test('rate limits are persistent and enforced',async()=>{for(let i=0;i<11;i++)await guest.request('/login','POST',{login:'NoAccount',password:'wrong'});assert.equal((await guest.request('/login','POST',{login:'NoAccount',password:'wrong'})).status,429);});
   await t.test('data and migrations survive database restart',async()=>{
-   await new Promise(r=>server.close(r));server=null;db.close();db=openDatabase(path);assert.equal(db.prepare('SELECT title FROM threads WHERE id=?').get(threadId).title,'Prima construcție RETRO');assert.ok(db.prepare('SELECT id FROM cases WHERE id=?').get(ticketId));assert.ok(db.prepare('SELECT id FROM attachments WHERE id=?').get(attachmentId));assert.equal(db.prepare('SELECT COUNT(*) n FROM migrations').get().n,4);assert.equal(db.prepare('SELECT COUNT(*) n FROM categories').get().n,9);
+   await new Promise(r=>server.close(r));server=null;db.close();db=openDatabase(path);assert.equal(db.prepare('SELECT title FROM threads WHERE id=?').get(threadId).title,'Prima construcție RETRO');assert.ok(db.prepare('SELECT id FROM cases WHERE id=?').get(ticketId));assert.ok(db.prepare('SELECT id FROM attachments WHERE id=?').get(attachmentId));assert.equal(db.prepare('SELECT COUNT(*) n FROM migrations').get().n,6);assert.equal(db.prepare('SELECT COUNT(*) n FROM categories').get().n,9);
   });
  }finally{if(server)await new Promise(r=>server.close(r));db.close();rmSync(dir,{recursive:true,force:true});}
 });

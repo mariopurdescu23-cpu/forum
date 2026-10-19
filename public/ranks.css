@@ -1,0 +1,15 @@
+.rank-owner { --rank:#ffcf69; --rank-bg:#d79a2020; --rank-border:#d79a2060; }
+.rank-co_owner { --rank:#ddabff; --rank-bg:#a95ae520; --rank-border:#b779e660; }
+.rank-admin { --rank:#ff7e8c; --rank-bg:#e13b4520; --rank-border:#e13b4560; }
+.rank-moderator { --rank:#75d9bb; --rank-bg:#309c7a20; --rank-border:#42b99460; }
+.rank-helper { --rank:#8ed9ff; --rank-bg:#3c95c020; --rank-border:#56b0dc60; }
+.rank-player { --rank:#b1a9ae; --rank-bg:#ffffff06; --rank-border:#ffffff12; }
+.role-badge { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; color:var(--rank); background:var(--rank-bg); border:1px solid var(--rank-border); border-radius:5px; font-size:.7rem; font-weight:700; line-height:1.3; vertical-align:middle; white-space:nowrap; }
+.role-badge svg { width:15px; height:15px; flex-shrink:0; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.staff-avatar { background:var(--rank-bg); border:1px solid var(--rank-border); color:var(--rank); box-shadow:inset 0 0 12px var(--rank-bg); }
+.staff-avatar svg { width:25px; height:25px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.staff-avatar.large svg { width:48px; height:48px; }
+.thread-meta .role-badge { padding:3px 6px; font-size:.62rem; }
+.thread-meta .role-badge svg { width:12px; height:12px; }
+
+.rank-super_admin { --rank:#ffb575; --rank-bg:#e18a3020; --rank-border:#e18a3060; }
