@@ -11,7 +11,7 @@ test('Discord persists retries, respects rate limits and prevents concurrent del
    calls++;assert.equal(new URL(url).searchParams.get('wait'),'true');
    const payload=JSON.parse(request.body);
    assert.deepEqual(payload.allowed_mentions,{parse:[]});
-   assert.match(payload.content,/https:\/\/forum.retro-mc.ro\/cases\/7/);
+   assert.equal(payload.embeds[0].url,'https://forum.retro-mc.ro/cases/7');
    assert.ok(!JSON.stringify(payload).includes('secret'));
    return calls===1?new Response(JSON.stringify({retry_after:5}),{status:429}):new Response('{}',{status:200});
   }};

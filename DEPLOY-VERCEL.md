@@ -76,3 +76,7 @@ Surse: [Turso](https://docs.turso.tech/sdk/ts/reference), [planuri Turso](https:
 ## Jurnal Discord extins
 
 Webhookul primeste notificari pentru conturi noi, autentificari/deconectari, resetari de parola reusite, profiluri, discutii, raspunsuri, voturi, cereri, mesaje si note la cereri, atasamente, roluri, categorii si setari. Se afiseaza actiunea, autorul si linkul; nu se transmit corpul mesajelor, emailuri, parole, tokenuri sau continutul notelor interne. Vizualizarile paginilor si marcarile notificarilor ca citite nu genereaza mesaje Discord.
+
+## Embeduri Discord
+
+Notificarile noi folosesc embeduri rosii. Cererile includ status, responsabil, prioritate, numele Minecraft, subiect, descrierea initiala (trunchiata la 1024 caractere) si linkul dovezilor. Continutul notelor interne si al conversatiei nu este transmis. Canalul webhookului trebuie sa fie accesibil echipei care gestioneaza cererile. Gestionarea se face prin linkul din embed, pe forum; butoanele interactive necesita o aplicatie Discord separata. Aceasta sectiune inlocuieste descrierea anterioara a formatului mesajelor.
